@@ -74,23 +74,22 @@
 И по весне.
     </div>
 
-    <img src="guitar.png" class="guitar" alt="Гитара">
+   <img src="guitar.png" id="play-button" class="guitar" alt="Гитара">
 
-    <audio id="bg-music" preload="auto">
+<audio id="bg-music" preload="auto">
   <source src="music_vovka.mp3" type="audio/mpeg">
 </audio>
 
 <script>
   const audio = document.getElementById('bg-music');
+  const button = document.getElementById('play-button');
 
-  document.body.addEventListener('click', () => {
+  button.addEventListener('click', () => {
     if (audio.paused) {
-      // только если не играет
       audio.currentTime = 0;
       audio.play().catch(e => console.warn("Autoplay blocked:", e));
     }
   });
 </script>
-
 </body>
 </html>
