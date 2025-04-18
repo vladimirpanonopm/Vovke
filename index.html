@@ -77,15 +77,20 @@
     <img src="guitar.png" class="guitar" alt="Гитара">
 
     <audio id="bg-music" preload="auto">
-        <source src="music_vovka.mp3" type="audio/mpeg">
-    </audio>
+  <source src="music_vovka.mp3" type="audio/mpeg">
+</audio>
 
-    <script>
-      const audio = document.getElementById('bg-music');
-      document.body.addEventListener('click', () => {
-        audio.currentTime = 0;
-        audio.play().catch(e => console.log("Autoplay blocked:", e));
-      });
-    </script>
+<script>
+  const audio = document.getElementById('bg-music');
+
+  document.body.addEventListener('click', () => {
+    if (audio.paused) {
+      // только если не играет
+      audio.currentTime = 0;
+      audio.play().catch(e => console.warn("Autoplay blocked:", e));
+    }
+  });
+</script>
+
 </body>
 </html>
